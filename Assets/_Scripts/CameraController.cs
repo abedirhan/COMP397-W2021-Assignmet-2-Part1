@@ -7,6 +7,7 @@ using UnityEngine;
  Unity game
  Authors Name: Ayhan SAGLAM--Khadka, Subarna Bijaya- Vu, Hieu Phong
  Date: 2021/02/10
+ Updated 2021/03/15
 */
 
 
@@ -16,6 +17,9 @@ using UnityEngine;
 /// </summary>
 public class CameraController : MonoBehaviour
 {
+    [Header("Controls")]
+    public Joystick joystick;
+    public float controlSensitivity = 2.0f;
     /// <summary>
     /// Class variables are written here
     /// </summary>
@@ -29,7 +33,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+       // Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -41,8 +45,11 @@ public class CameraController : MonoBehaviour
             return;
         }
 
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        // float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        // float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+        float mouseX = joystick.Horizontal * controlSensitivity;
+        float mouseY = joystick.Vertical * controlSensitivity;
 
         XRotation -= mouseY;
         XRotation = Mathf.Clamp(XRotation, -90.0f, 90.0f);
