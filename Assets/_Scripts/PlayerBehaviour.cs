@@ -26,7 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
     public Vector3 velocity;
     public bool isGrounded;
     public AudioSource jumpAudio;
-
+    public AudioSource attackAudio;
 
     [Header("Minimap")]
     public GameObject miniMap;
@@ -126,14 +126,15 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void DoDamage()
     {
+            attackAudio.Play();
             GameObject[] monsters = GameObject.FindGameObjectsWithTag("Enemy");
 
             for (int i = 0; i < monsters.Length; ++i)
             {
                 if (Vector3.Distance(controller.transform.position, monsters[i].transform.position) <= 3.0f)
                     monsters[i].GetComponent<EnemyBehaviour>().TakeDamage(25);
-                    Debug.Log("attack");
-                    Debug.Log(monsters[i].transform.position);       
+                    //Debug.Log("attack");
+                    //Debug.Log(monsters[i].transform.position);       
         }         
     }
 

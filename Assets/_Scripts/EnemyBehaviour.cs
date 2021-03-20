@@ -42,7 +42,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             //enemyHealthSlider.value = 0;
             enemyHealth = 0;
-            Debug.Log("enemy dead");
+            //Debug.Log("enemy dead");
             Destroy(this.gameObject);
         }
     }
