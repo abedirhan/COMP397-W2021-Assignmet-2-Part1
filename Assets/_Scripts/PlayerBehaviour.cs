@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-/*Game Name: Save the King 
+/*Game Name: Return Home  
  Unity game
  Authors Name: Ayhan SAGLAM -- Khadka, Subarna Bijaya -- Vu, Hieu Phong
  Date: 2021/02/10
@@ -26,7 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
     public Vector3 velocity;
     public bool isGrounded;
     public AudioSource jumpAudio;
-
+    public AudioSource attackAudio;
 
     [Header("Minimap")]
     public GameObject miniMap;
@@ -77,7 +77,12 @@ public class PlayerBehaviour : MonoBehaviour
             // Debug.Log("Player is walking");
         }
 
-        velocity.y += gravity * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            DoDamage();
+        }
+
+            velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
        
@@ -117,6 +122,20 @@ public class PlayerBehaviour : MonoBehaviour
     public void OnMapButtonPressed()
     {
         ToggleMinimap();
+    }
+
+    public void DoDamage()
+    {
+            attackAudio.Play();
+            GameObject[] monsters = GameObject.FindGameObjectsWithTag("Enemy");
+
+            for (int i = 0; i < monsters.Length; ++i)
+            {
+                if (Vector3.Distance(controller.transform.position, monsters[i].transform.position) <= 3.0f)
+                    monsters[i].GetComponent<EnemyBehaviour>().TakeDamage(25);
+                    //Debug.Log("attack");
+                    //Debug.Log(monsters[i].transform.position);       
+        }         
     }
 
 
