@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using GUI = UnityEngine.GUI;
-/*Game Name: Save the King 
+/*Game Name: Return Home 
  Unity game
  Authors Name: Ayhan SAGLAM--Khadka, Subarna Bijaya- Vu, Hieu Phong
  Date: 2021/02/10
