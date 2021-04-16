@@ -65,10 +65,10 @@ public class PlayerHealth : MonoBehaviour
             coinAudio.Play();
 
             //health should not be more than 100
-            if (health < 100)
-            {
-                health += 5;
-            }
+            //if (health < 100)
+            //{
+            //    health += 5;
+            //}
             coinCollected += 1;
             coinText.text = coinCollected.ToString() + " Coins!";
             Destroy(other.gameObject);
